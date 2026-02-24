@@ -13,14 +13,14 @@ const Contact = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-r from-green-700 to-green-600 text-white section-padding">
+      <section className="bg-gradient-to-r from-blue-700 to-blue-600 text-white section-padding">
         <div className="container-main">
           <ScrollReveal>
             <h1 className="font-heading text-4xl sm:text-5xl font-black mb-4">
-              Contact <span className="text-green-200">Greener Houston</span>
+              Contact <span className="text-blue-200">HZ Details</span>
             </h1>
-            <p className="font-body text-green-100 text-lg max-w-2xl">
-              Get in touch with our landscape design team. Call us or fill out the form below to schedule a free consultation.
+            <p className="font-body text-blue-100 text-lg max-w-2xl">
+              Get in touch with our auto detailing team. Call us or fill out the form below to schedule your vehicle detail service.
             </p>
           </ScrollReveal>
         </div>
@@ -34,48 +34,48 @@ const Contact = () => {
               <div className="bg-white rounded-xl shadow-lg p-8">
                 {submitted ? (
                   <div className="text-center py-10">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-green-600 to-green-500 flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 flex items-center justify-center mx-auto mb-4">
                       <Send className="w-8 h-8 text-white" />
                     </div>
                     <h2 className="font-heading text-2xl font-bold text-gray-900 mb-2">Message Sent!</h2>
                     <p className="font-body text-gray-600">We'll get back to you shortly. You can also call us directly.</p>
-                    <a href="tel:+18328017545" className="bg-green-600 text-white hover:bg-green-700 mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all">
-                      <Phone className="w-4 h-4" /> (832) 801-7545
+                    <a href="tel:+18329843507" className="bg-blue-600 text-white hover:bg-blue-700 mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all">
+                      <Phone className="w-4 h-4" /> (832) 984-3507
                     </a>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
-                    <h2 className="font-heading text-2xl font-bold text-gray-900 mb-6">Free Consultation Request</h2>
+                    <h2 className="font-heading text-2xl font-bold text-gray-900 mb-6">Book Your Detail Service</h2>
                     <div>
                       <label className="font-body text-sm font-medium text-gray-900 mb-2 block">Name *</label>
-                      <input required type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="Your name" />
+                      <input required type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Your name" />
                     </div>
                     <div>
                       <label className="font-body text-sm font-medium text-gray-900 mb-2 block">Phone *</label>
-                      <input required type="tel" className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="(832) 000-0000" />
+                      <input required type="tel" className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="(832) 000-0000" />
                     </div>
                     <div>
                       <label className="font-body text-sm font-medium text-gray-900 mb-2 block">Email</label>
-                      <input type="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent" placeholder="your@email.com" />
+                      <input type="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="your@email.com" />
                     </div>
                     <div>
                       <label className="font-body text-sm font-medium text-gray-900 mb-2 block">Service Interested In *</label>
-                      <select required className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent">
+                      <select required className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
                         <option value="">Select a service</option>
-                        <option>Landscape Design & Installation</option>
-                        <option>Hardscape Installation</option>
-                        <option>Irrigation & Drainage</option>
-                        <option>Sprinkler Installation & Repair</option>
-                        <option>Turf Installation</option>
-                        <option>Maintenance</option>
+                        <option>Full Detail Package</option>
+                        <option>Ceramic Coating</option>
+                        <option>Paint Correction</option>
+                        <option>Interior Deep Clean</option>
+                        <option>Exterior Protection</option>
+                        <option>Waxing & Polishing</option>
                         <option>Other</option>
                       </select>
                     </div>
                     <div>
-                      <label className="font-body text-sm font-medium text-gray-900 mb-2 block">Project Details</label>
-                      <textarea rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent resize-none" placeholder="Tell us about your project and vision..." />
+                      <label className="font-body text-sm font-medium text-gray-900 mb-2 block">Vehicle & Details</label>
+                      <textarea rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg font-body text-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent resize-none" placeholder="Tell us about your vehicle and what you'd like detailed..." />
                     </div>
-                    <button type="submit" className="bg-green-600 hover:bg-green-700 text-white w-full py-3 rounded-lg font-heading font-semibold flex items-center justify-center gap-2 transition-all duration-300">
+                    <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 rounded-lg font-heading font-semibold flex items-center justify-center gap-2 transition-all duration-300">
                       <Send className="w-5 h-5" /> Send Message
                     </button>
                   </form>
@@ -88,31 +88,31 @@ const Contact = () => {
               <ScrollReveal delay={0.1}>
                 <div className="bg-white rounded-xl shadow-lg p-8 space-y-6">
                   <h3 className="font-heading text-xl font-bold text-gray-900">Get In Touch</h3>
-                  <a href="tel:+18328017545" className="flex items-center gap-4 group hover:bg-green-50 p-4 rounded-lg transition-all">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-green-600 to-green-500 flex items-center justify-center shrink-0">
+                  <a href="tel:+18329843507" className="flex items-center gap-4 group hover:bg-blue-50 p-4 rounded-lg transition-all">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 flex items-center justify-center shrink-0">
                       <Phone className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <div className="font-heading font-bold text-gray-900 group-hover:text-green-700 transition-colors">(832) 801-7545</div>
+                      <div className="font-heading font-bold text-gray-900 group-hover:text-blue-700 transition-colors">(832) 984-3507</div>
                       <div className="font-body text-xs text-gray-600">Click to call</div>
                     </div>
                   </a>
-                  <a href="mailto:ray.greengrass@gmail.com" className="flex items-center gap-4 group hover:bg-green-50 p-4 rounded-lg transition-all">
-                    <div className="w-12 h-12 rounded-lg bg-green-600 flex items-center justify-center shrink-0">
+                  <a href="mailto:info@hzdetails.com" className="flex items-center gap-4 group hover:bg-blue-50 p-4 rounded-lg transition-all">
+                    <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center shrink-0">
                       <Mail className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <div className="font-heading font-bold text-gray-900 group-hover:text-green-700 transition-colors">ray.greengrass@gmail.com</div>
+                      <div className="font-heading font-bold text-gray-900 group-hover:text-blue-700 transition-colors">info@hzdetails.com</div>
                       <div className="font-body text-xs text-gray-600">Email us anytime</div>
                     </div>
                   </a>
-                  <div className="flex items-center gap-4 bg-green-50 p-4 rounded-lg">
-                    <div className="w-12 h-12 rounded-lg bg-green-600 flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-4 bg-blue-50 p-4 rounded-lg">
+                    <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center shrink-0">
                       <MapPin className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <div className="font-heading font-bold text-gray-900">1637 Oak Tree Dr</div>
-                      <div className="font-body text-xs text-gray-600">Houston, TX 77080</div>
+                      <div className="font-heading font-bold text-gray-900">Houston, TX</div>
+                      <div className="font-body text-xs text-gray-600">Multiple Service Locations</div>
                       <div className="font-body text-xs text-gray-600">Serving Greater Houston & surrounding areas</div>
                     </div>
                   </div>
@@ -122,8 +122,8 @@ const Contact = () => {
               <ScrollReveal delay={0.2}>
                 <div className="overflow-hidden rounded-xl shadow-lg">
                   <iframe
-                    title="Greener Houston Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.4766999999997!2d-95.5447!3d29.9537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c0a4b9c9c9c9%3A0x1234567890!2s1637%20Oak%20Tree%20Dr%2C%20Houston%2C%20TX%2077080!5e0!3m2!1sen!2sus!4v1234567890"
+                    title="HZ Details Houston Service Area"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.476699999998!2d-95.4471!3d29.8581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b9b3b8b8b8b9%3A0x1234567890!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1234567890"
                     width="100%"
                     height="300"
                     style={{ border: 0 }}

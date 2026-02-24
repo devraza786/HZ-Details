@@ -3,18 +3,18 @@ import { Star } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
 const reviews = [
-  { name: "Sarah Johnson", rating: 5, text: "Greener Houston completely transformed our backyard. The attention to detail and quality of work is unmatched. Our outdoor space is now the envy of the neighborhood!", service: "Landscape Design" },
-  { name: "Michael Chen", rating: 5, text: "The hardscape work is absolutely stunning. They understood our vision perfectly and delivered beyond our expectations. Professional and reliable.", service: "Hardscape Installation" },
-  { name: "Jessica Martinez", rating: 5, text: "Best decision we made for our home. The irrigation system works perfectly and our lawn has never looked better. Worth every penny!", service: "Irrigation System" },
-  { name: "David Rodriguez", rating: 5, text: "Professional team, competitive pricing, and excellent customer service. They handled everything from design to installation. Highly recommend!", service: "Landscape Install" },
-  { name: "Emily Watson", rating: 5, text: "Our outdoor living space is now our favorite place to be. The team was punctual, clean, and incredibly skilled. Amazing results!", service: "Design & Install" },
-  { name: "James Patterson", rating: 5, text: "The sprinkler system works like a dream. We've noticed a huge improvement in our lawn health. This is a company you can trust.", service: "Sprinkler Install" },
-  { name: "Lisa Anderson", rating: 5, text: "From consultation to completion, the whole experience was seamless. They answered all our questions and delivered exactly what we wanted.", service: "Landscape Design" },
-  { name: "Robert Taylor", rating: 5, text: "The quality of materials and craftsmanship is evident in every detail. Our patio looks like it belongs in a magazine. Fantastic work!", service: "Hardscape" },
-  { name: "Amanda Brown", rating: 5, text: "Greener Houston brought our landscape vision to life. The team was professional, efficient, and left everything spotless. Highly satisfied!", service: "Full Landscape" },
-  { name: "Christopher Lee", rating: 5, text: "The drainage system they installed solved all our water issues. Combined with the beautiful landscaping, our yard is now perfect!", service: "Irrigation & Drainage" },
-  { name: "Karen White", rating: 5, text: "These guys are true professionals. They respected our property and delivered exceptional results. We couldn't be happier!", service: "Landscape Install" },
-  { name: "Thomas Green", rating: 5, text: "Our backyard is now a beautiful outdoor oasis. The team's expertise and attention to detail made all the difference. Thank you!", service: "Design & Install" },
+  { name: "Marcus Johnson", rating: 5, text: "HZ Details completely transformed my car. The attention to detail is incredible and my paint now looks showroom-ready. Best investment for my vehicle!", service: "Full Detail" },
+  { name: "David Chen", rating: 5, text: "The ceramic coating work is absolutely flawless. They understood exactly what I wanted and delivered beyond my expectations. Professional and trustworthy.", service: "Ceramic Coating" },
+  { name: "Jennifer Martinez", rating: 5, text: "My car's interior has never looked better. The deep cleaning was thorough and they treated my vehicle with such care. Definitely worth every penny!", service: "Interior Detail" },
+  { name: "Carlos Rodriguez", rating: 5, text: "Competitive pricing, exceptional quality, and amazing customer service. The team handled everything perfectly from start to finish. Highly recommend!", service: "Paint Correction" },
+  { name: "Michelle Watson", rating: 5, text: "My vehicle looks brand new after HZ Details worked on it. The team was punctual, professional, and incredibly skilled. Outstanding results!", service: "Full Detail" },
+  { name: "James Patterson", rating: 5, text: "The ceramic coating they applied is holding up perfectly. My car stays cleaner longer and looks incredible. This is a company you can trust.", service: "Ceramic Coating" },
+  { name: "Lisa Anderson", rating: 5, text: "From booking to completion, the whole experience was seamless. They answered all my questions and delivered exactly what I expected. Very impressed!", service: "Waxing" },
+  { name: "Robert Taylor", rating: 5, text: "The quality of work and attention to detail is evident everywhere. My car looks like it came straight from a magazine. Fantastic service!", service: "Exterior Protection" },
+  { name: "Amanda Brown", rating: 5, text: "HZ Details brought my vehicle back to life. The team was professional, efficient, and left everything spotless. Highly satisfied!", service: "Full Detail" },
+  { name: "Christopher Lee", rating: 5, text: "The paint correction service removed all those scratches and swirls. Combined with the protective coating, my car looks perfect now!", service: "Paint Correction" },
+  { name: "Karen White", rating: 5, text: "These professionals really know their craft. They treated my car with respect and delivered exceptional results. Couldn't be happier!", service: "Interior Detail" },
+  { name: "Thomas Green", rating: 5, text: "My car is now a beautiful showcase-ready ride. The team's expertise and attention to detail made all the difference. Thank you!", service: "Full Detail" },
 ];
 
 const Testimonials = () => (
@@ -23,10 +23,10 @@ const Testimonials = () => (
       <div className="container-main">
         <ScrollReveal>
           <h1 className="font-heading text-4xl sm:text-5xl font-black mb-4">
-            What Our <span className="text-green-200">Clients Say</span>
+            What Our <span className="text-blue-200">Clients Say</span>
           </h1>
-          <p className="font-body text-green-100 text-lg max-w-2xl">
-            Hear from Houston homeowners who trust Greener Houston with their landscape dreams.
+          <p className="font-body text-blue-100 text-lg max-w-2xl">
+            Hear from satisfied customers who trust HZ Details with their vehicle's appearance and protection.
           </p>
         </ScrollReveal>
       </div>
@@ -46,7 +46,7 @@ const Testimonials = () => (
                 <p className="font-body text-gray-700 text-sm leading-relaxed flex-1 mb-4">"{r.text}"</p>
                 <div className="flex items-center justify-between">
                   <span className="font-heading font-bold text-gray-900 text-sm">{r.name}</span>
-                  <span className="font-body text-xs text-green-600 bg-green-50 px-3 py-1 rounded-full">{r.service}</span>
+                  <span className="font-body text-xs text-blue-600 bg-blue-50 px-3 py-1 rounded-full">{r.service}</span>
                 </div>
               </div>
             </ScrollReveal>
@@ -55,9 +55,9 @@ const Testimonials = () => (
 
         <ScrollReveal>
           <div className="text-center mt-14">
-            <h2 className="font-heading text-2xl font-bold text-gray-900 mb-4">Ready to Transform Your Landscape?</h2>
-            <Link to="/contact" className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition-all duration-300">
-              Schedule Your Consultation
+            <h2 className="font-heading text-2xl font-bold text-gray-900 mb-4">Ready to Detailing Your Vehicle?</h2>
+            <Link to="/contact" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition-all duration-300">
+              Book Your Detail Now
             </Link>
           </div>
         </ScrollReveal>
