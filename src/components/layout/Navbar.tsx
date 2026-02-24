@@ -9,6 +9,7 @@ const navLinks = [
   { to: "/services", label: "Services" },
   { to: "/gallery", label: "Gallery" },
   { to: "/testimonials", label: "Testimonials" },
+  { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -30,14 +31,14 @@ const Navbar = () => {
   return (
     <>
       {/* Top bar */}
-      <div className="bg-green-700 text-white py-2 px-4 text-sm">
+      <div className="bg-gray-900 text-white py-2 px-4 text-sm">
         <div className="container-main flex items-center justify-between">
-          <a href="tel:+18328017545" className="flex items-center gap-2 font-body font-medium hover:opacity-80 transition-opacity">
+          <a href="tel:+18329843507" className="flex items-center gap-2 font-body font-medium hover:opacity-80 transition-opacity">
             <Phone className="w-4 h-4" />
-            (832) 801-7545
+            (832) 984-3507
           </a>
           <div className="flex items-center gap-3">
-            <span className="hidden sm:inline text-green-100">Houston, TX &amp; Surrounding Areas</span>
+            <span className="hidden sm:inline text-gray-400">Houston, TX &amp; Surrounding Areas</span>
           </div>
         </div>
       </div>
@@ -50,7 +51,8 @@ const Navbar = () => {
       >
         <div className="container-main flex items-center justify-between py-4 px-4">
           <Link to="/" className="flex items-center gap-2">
-            <div className="font-bold text-xl text-green-700">Greener Houston</div>
+            <div className="font-black text-2xl text-blue-600">HZ Details</div>
+            <div className="text-xs text-gray-600 hidden sm:block">Premium Auto Detailing</div>
           </Link>
 
           {/* Desktop links */}
@@ -61,8 +63,8 @@ const Navbar = () => {
                 to={l.to}
                 className={`px-4 py-2 rounded-lg font-heading text-sm font-semibold transition-all duration-200 ${
                   location.pathname === l.to
-                    ? "bg-green-600 text-white"
-                    : "text-gray-700 hover:bg-green-50 hover:text-green-700"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 hover:bg-blue-50 hover:text-blue-700"
                 }`}
               >
                 {l.label}
@@ -71,10 +73,10 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:+18328017545" className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 text-sm font-semibold flex items-center gap-2 transition-all">
+            <a href="tel:+18329843507" className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm font-semibold flex items-center gap-2 transition-all">
               <Phone className="w-4 h-4" /> Call Now
             </a>
-            <Link to="/contact" className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 text-sm font-semibold transition-all">
+            <Link to="/contact" className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm font-semibold transition-all">
               Book Now
             </Link>
           </div>
@@ -82,10 +84,10 @@ const Navbar = () => {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-green-50"
+            className="lg:hidden p-2 rounded-lg hover:bg-blue-50"
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X className="w-6 h-6 text-green-700" /> : <Menu className="w-6 h-6 text-green-700" />}
+            {mobileOpen ? <X className="w-6 h-6 text-blue-700" /> : <Menu className="w-6 h-6 text-blue-700" />}
           </button>
         </div>
       </nav>
@@ -101,9 +103,9 @@ const Navbar = () => {
             className="fixed inset-y-0 right-0 z-[60] w-80 max-w-[85vw] bg-white text-gray-900 p-6 flex flex-col gap-4 shadow-2xl"
           >
             <button onClick={() => setMobileOpen(false)} className="self-end p-2" aria-label="Close menu">
-              <X className="w-6 h-6 text-green-700" />
+              <X className="w-6 h-6 text-blue-700" />
             </button>
-            <div className="font-bold text-xl text-green-700 text-center mb-4">Greener Houston</div>
+            <div className="font-black text-2xl text-blue-600 text-center mb-4">HZ Details</div>
             {navLinks.map((l, i) => (
               <motion.div
                 key={l.to}
@@ -114,7 +116,7 @@ const Navbar = () => {
                 <Link
                   to={l.to}
                   className={`block px-4 py-3 rounded-lg font-heading font-semibold transition-colors ${
-                    location.pathname === l.to ? "bg-green-600 text-white" : "hover:bg-green-50 text-gray-700"
+                    location.pathname === l.to ? "bg-blue-600 text-white" : "hover:bg-blue-50 text-gray-700"
                   }`}
                 >
                   {l.label}
@@ -122,10 +124,10 @@ const Navbar = () => {
               </motion.div>
             ))}
             <div className="mt-auto flex flex-col gap-3">
-              <a href="tel:+18328017545" className="bg-green-600 text-white text-center flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all">
+              <a href="tel:+18329843507" className="bg-blue-600 text-white text-center flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all">
                 <Phone className="w-4 h-4" /> Call Now
               </a>
-              <Link to="/contact" className="bg-green-600 text-white text-center px-4 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all">
+              <Link to="/contact" className="bg-blue-600 text-white text-center px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all">
                 Book Now
               </Link>
             </div>
@@ -133,7 +135,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
       {mobileOpen && (
-        <div className="fixed inset-0 z-[55] bg-black/40 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
+        <div className="fixed inset-0 z-[55] bg-black/30 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
       )}
     </>
   );

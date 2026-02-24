@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Leaf, Hammer, Droplet, Sprout, Phone, ArrowRight, MapPin, Mail, Star, CheckCircle, MessageSquare } from "lucide-react";
+import { Sparkles, Shield, Droplets, Zap, Phone, ArrowRight, MapPin, Mail, Star, CheckCircle } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { Button } from "@/components/ui/button";
@@ -8,77 +8,102 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
-// Hero carousel images (Unsplash landscape photos)
+// Your uploaded car detailing images
 const heroImages = [
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1585320806997-c33953f03a98?w=1200&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1597848212624-753a6d5f4e2c?w=1200&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1585320806997-c33953f03a98?w=1200&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F10e1f2694abb4a0dabfb8812173d4084?format=webp&width=1200&height=600",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F78c01117a0cb47bfa9b2be17b8b4c7b6?format=webp&width=1200&height=600",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F553aae8d055e49fda00e26417bc3c33c?format=webp&width=1200&height=600",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F4ef6a85c716d4b95a528a6b07b07f338?format=webp&width=1200&height=600",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F0c39432d3fdd4664b2ad2263591c10ee?format=webp&width=1200&height=600",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F5a65e7400dd74ff28e811257373cf4dc?format=webp&width=1200&height=600",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F94c401dbe0e64481b1f94fdf7b936033?format=webp&width=1200&height=600",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F9001257ce48a49dfbb62cd63749e2025?format=webp&width=1200&height=600",
 ];
+
+// Carousel images for section 5
+const carouselImages = heroImages;
 
 // Showcase images
 const showcaseImages = [
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1585320806997-c33953f03a98?w=600&h=400&fit=crop",
-  "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F10e1f2694abb4a0dabfb8812173d4084?format=webp&width=600&height=400",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F553aae8d055e49fda00e26417bc3c33c?format=webp&width=600&height=400",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F78c01117a0cb47bfa9b2be17b8b4c7b6?format=webp&width=600&height=400",
+  "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F4ef6a85c716d4b95a528a6b07b07f338?format=webp&width=600&height=400",
 ];
 
 const services = [
   {
-    icon: Leaf,
-    title: "Landscape Install & Design",
-    desc: "Complete landscape transformation with custom design and professional installation.",
+    icon: Sparkles,
+    title: "Full Detail",
+    desc: "Complete interior and exterior restoration for a showroom finish.",
   },
   {
-    icon: Hammer,
-    title: "Hardscape Installation",
-    desc: "Stone patios, pathways, retaining walls, and outdoor structures built to last.",
+    icon: Shield,
+    title: "Ceramic Coating",
+    desc: "Long-lasting protection with a brilliant hydrophobic finish.",
   },
   {
-    icon: Droplet,
-    title: "Irrigation & Drainage",
-    desc: "Smart irrigation systems and drainage solutions for a healthy, thriving landscape.",
+    icon: Droplets,
+    title: "Paint Correction",
+    desc: "Remove swirls, scratches, and oxidation for flawless paint.",
   },
   {
-    icon: Sprout,
-    title: "Sprinkler Installation & Repair",
-    desc: "Professional sprinkler systems designed for Houston's unique climate.",
+    icon: Zap,
+    title: "Interior Deep Clean",
+    desc: "Leather conditioning, carpet shampooing, and interior protection.",
+  },
+  {
+    icon: Shield,
+    title: "Exterior Protection",
+    desc: "Waxing, sealants, and long-term paint protection systems.",
   },
 ];
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    text: "Greener Houston transformed our backyard into a beautiful oasis. Professional, reliable, and attention to detail is unmatched!",
+    name: "Marcus J.",
+    text: "HZ Details transformed my truck. Best detailing I've ever had in Houston. The ceramic coating still beads water months later!",
     rating: 5,
+    service: "Ceramic Coating",
   },
   {
-    name: "Michael Chen",
-    text: "The hardscape work is absolutely stunning. They understood our vision perfectly and delivered beyond expectations.",
+    name: "Sarah T.",
+    text: "My car looked brand new after the full detail. They got stains out of my seats I thought were permanent. Highly recommend!",
     rating: 5,
+    service: "Full Detail",
   },
   {
-    name: "Jessica Martinez",
-    text: "Best decision we made for our home. The irrigation system works perfectly, and our lawn has never looked better.",
+    name: "David L.",
+    text: "Professional, thorough, and the results speak for themselves. My BMW has never looked this good. Worth every penny.",
     rating: 5,
+    service: "Paint Correction",
   },
   {
-    name: "David Rodriguez",
-    text: "Professional team, competitive pricing, and excellent customer service. Highly recommend to anyone in Houston!",
+    name: "Jennifer R.",
+    text: "I've tried several detailers in Houston and HZ Details is by far the best. Attention to detail is unmatched.",
     rating: 5,
+    service: "Full Detail",
+  },
+  {
+    name: "Carlos M.",
+    text: "The paint correction on my black car was incredible. Every swirl mark is gone. It looks like a mirror now!",
+    rating: 5,
+    service: "Paint Correction",
+  },
+  {
+    name: "Amanda K.",
+    text: "Quick, affordable, and the wax job left my car gleaming. Great communication throughout the process.",
+    rating: 5,
+    service: "Waxing",
   },
 ];
 
 const Index = () => {
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", vehicle: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Auto-rotate hero carousel
+  // Auto-rotate hero carousel every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentHeroIndex((prev) => (prev + 1) % heroImages.length);
@@ -89,65 +114,65 @@ const Index = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
-      toast.error("Please fill in all fields");
+      toast.error("Please fill in all required fields");
       return;
     }
     setIsSubmitting(true);
-    // Simulate form submission
     setTimeout(() => {
-      toast.success("Thank you! We'll contact you soon.");
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      toast.success("Quote request submitted! We'll contact you soon.");
+      setFormData({ name: "", email: "", phone: "", vehicle: "", message: "" });
       setIsSubmitting(false);
     }, 1000);
   };
 
   return (
     <>
-      {/* Hero Section with Carousel */}
+      {/* SECTION 1: HERO WITH CAROUSEL */}
       <section className="relative w-full h-[85vh] overflow-hidden">
-        {/* Background carousel */}
+        {/* Background image carousel */}
         <div className="absolute inset-0">
           {heroImages.map((img, idx) => (
             <motion.img
               key={idx}
               src={img}
-              alt="Landscape design"
+              alt={`HZ Details - Premium Auto Detailing ${idx + 1}`}
               className="absolute inset-0 w-full h-full object-cover"
               initial={{ opacity: 0 }}
               animate={{ opacity: idx === currentHeroIndex ? 1 : 0 }}
               transition={{ duration: 1 }}
             />
           ))}
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
         </div>
 
         {/* Hero content */}
         <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="container-main px-4 max-w-3xl text-center text-white">
+          <div className="container-main px-4 max-w-4xl text-center text-white">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              key={currentHeroIndex}
             >
-              <h2 className="text-sm md:text-base font-semibold text-green-400 mb-4 uppercase tracking-widest">
-                Premium Landscape Services
+              <h2 className="text-sm md:text-base font-semibold text-blue-300 mb-4 uppercase tracking-widest">
+                Professional Auto Detailing
               </h2>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
-                Creating Outdoor Masterpieces
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-4">
+                Premium Auto Detailing in Houston
               </h1>
-              <p className="text-lg md:text-2xl font-light mb-8 text-gray-100">
-                Masters of Landscape Design and Installation in Houston
-              </p>
-              <p className="text-base md:text-lg mb-10 text-gray-200 max-w-2xl mx-auto leading-relaxed">
-                Premier landscape design and installation services in Houston. We bring your outdoor dreams to life with quality, sustainability, and personalized service.
+              <h3 className="text-2xl md:text-3xl font-light mb-6">
+                Creating Showroom Finishes One Vehicle at a Time
+              </h3>
+              <p className="text-lg md:text-xl mb-10 text-gray-200 max-w-3xl mx-auto leading-relaxed font-light">
+                Masters of Car Care – Full Detailing, Ceramic Coating, Paint Correction & Protection Services in Houston. We bring your car's beauty back with precision, premium products, and personalized care.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group">
+                <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group text-lg">
                   Book Now <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <a href="tel:+18328017545" className="px-8 py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-lg transition-all duration-300 backdrop-blur-sm border border-white/30 flex items-center justify-center gap-2">
-                  <Phone className="w-5 h-5" /> (832) 801-7545
+                <a href="tel:+18329843507" className="px-8 py-4 bg-white/20 hover:bg-white/30 text-white font-bold rounded-lg transition-all duration-300 backdrop-blur-sm border border-white/30 flex items-center justify-center gap-2 text-lg">
+                  <Phone className="w-5 h-5" /> (832) 984-3507
                 </a>
               </div>
             </motion.div>
@@ -161,7 +186,7 @@ const Index = () => {
               key={idx}
               onClick={() => setCurrentHeroIndex(idx)}
               className={`h-2 transition-all duration-300 rounded-full ${
-                idx === currentHeroIndex ? "bg-green-500 w-8" : "bg-white/40 w-2"
+                idx === currentHeroIndex ? "bg-blue-500 w-8" : "bg-white/40 w-2"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
@@ -169,73 +194,79 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container-main max-w-4xl">
+      {/* SECTION 2: MASTERS OF AUTO DETAILING INTRO */}
+      <section className="py-20 md:py-24 bg-white">
+        <div className="container-main max-w-4xl px-4">
           <ScrollReveal>
-            <p className="text-center text-lg md:text-xl text-gray-700 leading-relaxed">
-              With over a decade of experience in landscape design and installation, Greener Houston specializes in creating stunning outdoor spaces that reflect your style and enhance your property value. From lush gardens and beautiful hardscapes to advanced irrigation systems, we handle every aspect of your landscape with precision and care.
-            </p>
+            <div className="text-center space-y-6">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900">Masters of Auto Detailing</h2>
+              <h3 className="text-xl md:text-2xl text-blue-600 font-semibold">Premier Auto Detailing & Protection Services</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                With over a decade of experience in professional auto detailing, HZ Details specializes in restoring and protecting your vehicle's beauty. From ceramic coatings that last years to paint correction that reveals your car's true shine, we handle every detail with precision and care. Our team understands Houston's demanding climate—intense UV rays, humidity, and environmental contaminants that attack your vehicle's finish. We use premium products and industry-leading techniques to deliver results that exceed expectations.
+              </p>
+            </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Image Carousel Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="container-main">
+      {/* SECTION 3: LARGE IMAGE CAROUSEL */}
+      <section className="py-20 md:py-24 bg-gray-50">
+        <div className="container-main px-4">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-12 text-gray-900">
-              Our Latest Projects
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-14 text-gray-900">
+              Our Latest Work
             </h2>
           </ScrollReveal>
           <Carousel className="w-full" opts={{ loop: true }}>
             <CarouselContent>
-              {heroImages.slice(0, 6).map((img, idx) => (
+              {carouselImages.map((img, idx) => (
                 <CarouselItem key={idx} className="basis-full md:basis-1/2 lg:basis-1/3">
                   <ScrollReveal>
-                    <div className="overflow-hidden rounded-lg shadow-lg h-64 md:h-72">
-                      <img src={img} alt={`Project ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                    <div className="overflow-hidden rounded-xl shadow-lg h-72 md:h-80">
+                      <img 
+                        src={img} 
+                        alt={`Detailing work ${idx + 1}`} 
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                      />
                     </div>
                   </ScrollReveal>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-16 bg-green-600 text-white border-0 hover:bg-green-700" />
-            <CarouselNext className="hidden md:flex -right-16 bg-green-600 text-white border-0 hover:bg-green-700" />
+            <CarouselPrevious className="hidden md:flex -left-16 bg-blue-600 text-white border-0 hover:bg-blue-700" />
+            <CarouselNext className="hidden md:flex -right-16 bg-blue-600 text-white border-0 hover:bg-blue-700" />
           </Carousel>
         </div>
       </section>
 
-      {/* Experience the Difference Section */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container-main">
+      {/* SECTION 4: EXPERIENCE THE DIFFERENCE (3 COLUMNS) */}
+      <section className="py-20 md:py-24 bg-white">
+        <div className="container-main px-4">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black mb-4 text-gray-900">
-                Experience the Difference
-              </h2>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-14 text-gray-900">
+              Experience the Difference
+            </h2>
           </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "High Quality Experience & Design",
-                desc: "Our award-winning designers create custom outdoor spaces that exceed expectations.",
+                title: "Premium Products & Techniques",
+                desc: "We use only professional-grade products and cutting-edge detailing techniques to achieve flawless results.",
               },
               {
-                title: "Owner's Guarantee",
-                desc: "We stand behind our work with a comprehensive guarantee on all installations.",
+                title: "Owner's Satisfaction Guarantee",
+                desc: "We stand behind our work with a comprehensive satisfaction guarantee. Your car's beauty is our priority.",
               },
               {
-                title: "Industry-Leading Equipment",
-                desc: "We use the latest technology and premium materials for lasting results.",
+                title: "Industry-Leading Tools & Experts",
+                desc: "Our team uses the latest equipment and technology combined with years of expertise in Houston auto care.",
               },
             ].map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="text-center p-8 rounded-xl bg-gradient-to-br from-green-50 to-transparent border border-green-200">
-                  <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">{item.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                <div className="text-center p-10 rounded-xl bg-gradient-to-br from-blue-50 to-transparent border border-blue-200 hover:shadow-lg transition-shadow">
+                  <CheckCircle className="w-14 h-14 text-blue-600 mx-auto mb-5" />
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">{item.title}</h3>
+                  <p className="text-gray-700 leading-relaxed">{item.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -243,26 +274,26 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="container-main">
+      {/* SECTION 5: OUR SERVICES (5 CARDS) */}
+      <section className="py-20 md:py-24 bg-gray-50">
+        <div className="container-main px-4">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black mb-4 text-gray-900">
+            <div className="text-center mb-14">
+              <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900">
                 Our Services
               </h2>
-              <p className="text-lg text-gray-600">Comprehensive landscape solutions for every need</p>
+              <p className="text-xl text-gray-600">Comprehensive auto detailing solutions for every need</p>
             </div>
           </ScrollReveal>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {services.map((service, i) => (
-              <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 group">
-                  <div className="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors">
-                    <service.icon className="w-7 h-7 text-green-600 group-hover:text-white transition-colors" />
+              <ScrollReveal key={i} delay={i * 0.08}>
+                <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 group text-center">
+                  <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mx-auto mb-5 group-hover:bg-blue-600 transition-colors">
+                    <service.icon className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{service.desc}</p>
+                  <h3 className="text-lg font-bold mb-3 text-gray-900">{service.title}</h3>
+                  <p className="text-gray-700 text-sm leading-relaxed">{service.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -270,104 +301,122 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-r from-green-600 to-green-700 text-white">
-        <div className="container-main max-w-3xl">
+      {/* SECTION 6: BIG CTA SECTION WITH FORM */}
+      <section className="py-20 md:py-24 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
+        <div className="container-main max-w-3xl px-4">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black mb-4">
+              <h2 className="text-4xl md:text-5xl font-black mb-4">
                 Are You Ready?
               </h2>
-              <p className="text-lg text-green-50">
-                Your dream escape starts here. Let's create something beautiful together.
+              <h3 className="text-2xl md:text-3xl font-light mb-6">
+                Your Showroom Finish Starts Here
+              </h3>
+              <p className="text-lg text-blue-100">
+                Have a question or need a quote? Complete the form below and we'll respond quickly with a personalized plan for your vehicle.
               </p>
             </div>
           </ScrollReveal>
 
           {/* Contact Form */}
           <ScrollReveal>
-            <form onSubmit={handleFormSubmit} className="bg-white/10 backdrop-blur-md rounded-xl p-8 border border-white/20">
-              <div className="grid md:grid-cols-2 gap-4 mb-4">
+            <form onSubmit={handleFormSubmit} className="bg-white/10 backdrop-blur-md rounded-xl p-8 md:p-10 border border-white/20 space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
                 <Input
-                  placeholder="Your Name"
+                  placeholder="Your Name *"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
                   className="bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-lg"
                 />
                 <Input
                   type="email"
-                  placeholder="Your Email"
+                  placeholder="Your Email *"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
                   className="bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-lg"
                 />
               </div>
-              <Input
-                type="tel"
-                placeholder="Your Phone"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full mb-4 bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-lg"
-              />
+              <div className="grid md:grid-cols-2 gap-4">
+                <Input
+                  type="tel"
+                  placeholder="Your Phone *"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  required
+                  className="bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-lg"
+                />
+                <Input
+                  placeholder="Vehicle Type/Make (e.g., Black Tesla Model 3)"
+                  value={formData.vehicle}
+                  onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
+                  className="bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-lg"
+                />
+              </div>
               <Textarea
-                placeholder="Tell us about your project..."
+                placeholder="Tell us about your detailing needs... *"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full mb-6 bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-lg min-h-32"
+                required
+                className="w-full bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-lg min-h-32"
               />
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-white text-green-700 hover:bg-gray-100 font-bold py-3 rounded-lg transition-all duration-300"
+                className="w-full bg-white text-blue-700 hover:bg-gray-100 font-bold py-3 rounded-lg transition-all duration-300 text-lg"
               >
-                {isSubmitting ? "Sending..." : "Get Your Free Consultation"}
+                {isSubmitting ? "Sending..." : "Get Your Free Quote"}
               </Button>
             </form>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container-main">
+      {/* SECTION 7: SERVICE AREAS WITH MAP */}
+      <section className="py-20 md:py-24 bg-white">
+        <div className="container-main px-4">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-12 text-gray-900">
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-6 text-gray-900">
               Service Areas
             </h2>
+            <p className="text-center text-lg text-gray-700 mb-12 max-w-2xl mx-auto">
+              We proudly serve Houston, TX and all surrounding areas including the Energy Corridor, The Woodlands, Sugar Land, Katy, Cypress, Spring, and beyond.
+            </p>
           </ScrollReveal>
-          <div className="rounded-xl overflow-hidden shadow-lg h-96 md:h-[500px]">
+          <div className="rounded-xl overflow-hidden shadow-2xl h-96 md:h-[500px]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.4766999999997!2d-95.5447!3d29.9537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c0a4b9c9c9c9%3A0x1234567890!2s1637%20Oak%20Tree%20Dr%2C%20Houston%2C%20TX%2077080!5e0!3m2!1sen!2sus!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443088.06808834786!2d-95.68018650000001!3d29.8171079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b4488d8501%3A0xca0d02def365053b!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1700000000000"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Greener Houston Location"
+              title="HZ Details Houston Service Area"
             />
           </div>
         </div>
       </section>
 
-      {/* Showcase Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="container-main">
+      {/* SECTION 8: TRANSFORM YOUR RIDE */}
+      <section className="py-20 md:py-24 bg-gray-50">
+        <div className="container-main px-4">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-6 text-gray-900">
-              Transform Your Outdoor Spaces
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-6 text-gray-900">
+              Transform Your Ride
             </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              From concept to completion, we handle every detail with precision and expertise. Our portfolio showcases the transformations we've created for satisfied clients throughout Houston.
+            <p className="text-center text-lg text-gray-700 mb-14 max-w-3xl mx-auto leading-relaxed">
+              From dull and scratched paint to mirror-like perfection. Our ceramic coating and paint correction services reveal the true beauty hiding beneath your vehicle's surface. See the dramatic before-and-after transformations we've created for Houston drivers.
             </p>
           </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {showcaseImages.map((img, idx) => (
               <ScrollReveal key={idx} delay={idx * 0.1}>
-                <div className="rounded-lg overflow-hidden shadow-lg h-64 md:h-80 group cursor-pointer">
+                <div className="rounded-lg overflow-hidden shadow-lg h-64 md:h-72 group cursor-pointer">
                   <img
                     src={img}
-                    alt={`Landscape showcase ${idx + 1}`}
+                    alt={`Before and after detailing ${idx + 1}`}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
@@ -377,21 +426,21 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container-main">
+      {/* SECTION 9: TESTIMONIALS */}
+      <section className="py-20 md:py-24 bg-white">
+        <div className="container-main px-4">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black mb-4 text-gray-900">
-                What Our Clients Say
+            <div className="text-center mb-14">
+              <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900">
+                See What Our Customers Are Saying
               </h2>
-              <p className="text-gray-600">Trusted by homeowners across Houston</p>
+              <p className="text-lg text-gray-600">Trusted by hundreds of Houston vehicle owners</p>
             </div>
           </ScrollReveal>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, idx) => (
-              <ScrollReveal key={idx} delay={idx * 0.1}>
-                <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <ScrollReveal key={idx} delay={idx * 0.08}>
+                <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
                   <div className="flex gap-1 mb-4">
                     {Array(testimonial.rating)
                       .fill(0)
@@ -399,8 +448,11 @@ const Index = () => {
                         <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                       ))}
                   </div>
-                  <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
-                  <p className="font-bold text-gray-900">— {testimonial.name}</p>
+                  <p className="text-gray-800 mb-6 italic text-sm leading-relaxed">"{testimonial.text}"</p>
+                  <div className="flex items-center justify-between">
+                    <p className="font-bold text-gray-900">— {testimonial.name}</p>
+                    <span className="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full">{testimonial.service}</span>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -408,21 +460,21 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Call to Action Footer */}
-      <section className="py-16 md:py-20 bg-gray-900 text-white">
-        <div className="container-main text-center">
+      {/* SECTION 10: FINAL CTA */}
+      <section className="py-20 md:py-24 bg-gray-900 text-white">
+        <div className="container-main text-center px-4">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-black mb-8">
-              Ready to Transform Your Landscape?
+            <h2 className="text-4xl md:text-5xl font-black mb-6">
+              Let's Give Your Car the Treatment It Deserves
             </h2>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-              Contact Greener Houston today for a free consultation. Let's discuss your landscaping dreams and create a plan that brings them to life.
+            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+              Contact HZ Details today for a free consultation. Let's discuss your vehicle's needs and create a custom detailing plan.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+18328017545" className="px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
-                <Phone className="w-5 h-5" /> (832) 801-7545
+              <a href="tel:+18329843507" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-lg">
+                <Phone className="w-5 h-5" /> (832) 984-3507
               </a>
-              <a href="mailto:ray.greengrass@gmail.com" className="px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
+              <a href="mailto:info@hzdetails.com" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-lg">
                 <Mail className="w-5 h-5" /> Email Us
               </a>
             </div>

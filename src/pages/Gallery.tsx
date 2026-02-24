@@ -4,14 +4,46 @@ import { X } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop", caption: "Custom hardscape patio with stone installation", alt: "Hardscape patio design Houston TX" },
-  { src: "https://images.unsplash.com/photo-1585320806997-c33953f03a98?w=600&h=400&fit=crop", caption: "Lush landscape design with native plants", alt: "Landscape design Houston" },
-  { src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop", caption: "Professional irrigation system installation", alt: "Irrigation system Houston TX" },
-  { src: "https://images.unsplash.com/photo-1597848212624-753a6d5f4e2c?w=600&h=400&fit=crop", caption: "Beautiful garden landscape transformation", alt: "Garden design Houston" },
-  { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop", caption: "Outdoor living space with lighting design", alt: "Outdoor living space Houston" },
-  { src: "https://images.unsplash.com/photo-1585320806997-c33953f03a98?w=600&h=400&fit=crop", caption: "Turf installation and landscape maintenance", alt: "Turf installation Houston TX" },
-  { src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop", caption: "Drainage system installation", alt: "Drainage system Houston" },
-  { src: "https://images.unsplash.com/photo-1597848212624-753a6d5f4e2c?w=600&h=400&fit=crop", caption: "Sprinkler system design and installation", alt: "Sprinkler system Houston TX" },
+  { 
+    src: "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F10e1f2694abb4a0dabfb8812173d4084?format=webp&width=600&height=400", 
+    caption: "Full exterior detail — professional hand polishing to a mirror finish", 
+    alt: "Full exterior auto detail Houston TX" 
+  },
+  { 
+    src: "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F78c01117a0cb47bfa9b2be17b8b4c7b6?format=webp&width=600&height=400", 
+    caption: "Interior deep clean — pristine leather conditioning and detailing", 
+    alt: "Interior car detailing Houston" 
+  },
+  { 
+    src: "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F553aae8d055e49fda00e26417bc3c33c?format=webp&width=600&height=400", 
+    caption: "Ceramic coating application — premium paint protection system", 
+    alt: "Ceramic coating Houston TX" 
+  },
+  { 
+    src: "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F4ef6a85c716d4b95a528a6b07b07f338?format=webp&width=600&height=400", 
+    caption: "Paint correction — before & after swirl removal and restoration", 
+    alt: "Paint correction Houston TX" 
+  },
+  { 
+    src: "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F0c39432d3fdd4664b2ad2263591c10ee?format=webp&width=600&height=400", 
+    caption: "Professional exterior wash — using premium products and safe techniques", 
+    alt: "Car washing service Houston" 
+  },
+  { 
+    src: "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F5a65e7400dd74ff28e811257373cf4dc?format=webp&width=600&height=400", 
+    caption: "Engine bay detailing — professional cleaning and protection", 
+    alt: "Engine detailing Houston TX" 
+  },
+  { 
+    src: "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F94c401dbe0e64481b1f94fdf7b936033?format=webp&width=600&height=400", 
+    caption: "Leather interior restoration — conditioning for like-new condition", 
+    alt: "Leather conditioning auto detail Houston" 
+  },
+  { 
+    src: "https://cdn.builder.io/api/v1/image/assets%2F65f7149b6e744edf9d649d7a825379d9%2F9001257ce48a49dfbb62cd63749e2025?format=webp&width=600&height=400", 
+    caption: "Close-up detailing — attention to every surface and crevice", 
+    alt: "Detail work Houston TX" 
+  },
 ];
 
 const Gallery = () => {
@@ -19,14 +51,14 @@ const Gallery = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-r from-green-700 to-green-600 text-white section-padding">
+      <section className="bg-gradient-to-r from-blue-700 to-blue-900 text-white section-padding">
         <div className="container-main">
           <ScrollReveal>
             <h1 className="font-heading text-4xl sm:text-5xl font-black mb-4">
-              Our Landscape <span className="text-green-200">Projects</span>
+              Our Detailing <span className="text-blue-300">Portfolio</span>
             </h1>
-            <p className="font-body text-green-100 text-lg max-w-2xl">
-              Browse our portfolio of stunning landscape design and installation projects throughout Houston and surrounding areas.
+            <p className="font-body text-blue-100 text-lg max-w-2xl">
+              Browse our portfolio of premium auto detailing results from Houston and surrounding areas. See the transformations we create.
             </p>
           </ScrollReveal>
         </div>
@@ -50,7 +82,7 @@ const Gallery = () => {
                     />
                   </div>
                   <div className="p-4 bg-white">
-                    <p className="font-body text-sm text-gray-600">{img.caption}</p>
+                    <p className="font-body text-sm text-gray-700">{img.caption}</p>
                   </div>
                 </button>
               </ScrollReveal>
@@ -82,8 +114,8 @@ const Gallery = () => {
                 className="w-full aspect-[16/10] object-cover"
               />
               <div className="p-4 flex items-center justify-between">
-                <p className="font-body text-sm text-gray-600">{galleryImages[lightbox].caption}</p>
-                <button onClick={() => setLightbox(null)} className="p-2 hover:text-green-600 transition-colors">
+                <p className="font-body text-sm text-gray-700">{galleryImages[lightbox].caption}</p>
+                <button onClick={() => setLightbox(null)} className="p-2 hover:text-blue-600 transition-colors">
                   <X className="w-5 h-5" />
                 </button>
               </div>
