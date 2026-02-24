@@ -6,11 +6,9 @@ import logo from "@/assets/logo.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/gallery", label: "Gallery" },
   { to: "/testimonials", label: "Testimonials" },
-  { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -32,14 +30,14 @@ const Navbar = () => {
   return (
     <>
       {/* Top bar */}
-      <div className="gradient-navy text-primary-foreground py-2 px-4 text-sm">
+      <div className="bg-green-700 text-white py-2 px-4 text-sm">
         <div className="container-main flex items-center justify-between">
-          <a href="tel:+18329843507" className="flex items-center gap-2 font-body font-medium hover:opacity-80 transition-opacity">
+          <a href="tel:+18328017545" className="flex items-center gap-2 font-body font-medium hover:opacity-80 transition-opacity">
             <Phone className="w-4 h-4" />
-            (832) 984-3507
+            (832) 801-7545
           </a>
           <div className="flex items-center gap-3">
-            <span className="hidden sm:inline text-silver-light">Houston, TX &amp; Surrounding Areas</span>
+            <span className="hidden sm:inline text-green-100">Houston, TX &amp; Surrounding Areas</span>
           </div>
         </div>
       </div>
@@ -47,12 +45,12 @@ const Navbar = () => {
       {/* Main nav */}
       <nav
         className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled ? "glass-panel shadow-lg" : "bg-card/80 backdrop-blur-sm"
+          scrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-sm"
         }`}
       >
-        <div className="container-main flex items-center justify-between py-3 px-4">
+        <div className="container-main flex items-center justify-between py-4 px-4">
           <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="HZ Details Houston Texas" className="h-14 w-auto" />
+            <div className="font-bold text-xl text-green-700">Greener Houston</div>
           </Link>
 
           {/* Desktop links */}
@@ -61,10 +59,10 @@ const Navbar = () => {
               <Link
                 key={l.to}
                 to={l.to}
-                className={`px-4 py-2 rounded-xl font-heading text-sm font-semibold transition-all duration-200 ${
+                className={`px-4 py-2 rounded-lg font-heading text-sm font-semibold transition-all duration-200 ${
                   location.pathname === l.to
-                    ? "bg-primary text-primary-foreground"
-                    : "text-foreground hover:bg-secondary"
+                    ? "bg-green-600 text-white"
+                    : "text-gray-700 hover:bg-green-50 hover:text-green-700"
                 }`}
               >
                 {l.label}
@@ -73,10 +71,10 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:+18329843507" className="btn-primary text-sm flex items-center gap-2">
+            <a href="tel:+18328017545" className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 text-sm font-semibold flex items-center gap-2 transition-all">
               <Phone className="w-4 h-4" /> Call Now
             </a>
-            <Link to="/contact" className="btn-accent text-sm">
+            <Link to="/contact" className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 text-sm font-semibold transition-all">
               Book Now
             </Link>
           </div>
@@ -84,10 +82,10 @@ const Navbar = () => {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden clay-button bg-secondary p-2"
+            className="lg:hidden p-2 rounded-lg hover:bg-green-50"
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X className="w-6 h-6 text-green-700" /> : <Menu className="w-6 h-6 text-green-700" />}
           </button>
         </div>
       </nav>
@@ -100,12 +98,12 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-y-0 right-0 z-[60] w-80 max-w-[85vw] gradient-navy text-primary-foreground p-6 flex flex-col gap-4 shadow-2xl"
+            className="fixed inset-y-0 right-0 z-[60] w-80 max-w-[85vw] bg-white text-gray-900 p-6 flex flex-col gap-4 shadow-2xl"
           >
             <button onClick={() => setMobileOpen(false)} className="self-end p-2" aria-label="Close menu">
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 text-green-700" />
             </button>
-            <img src={logo} alt="HZ Details" className="h-16 w-auto mx-auto mb-4" />
+            <div className="font-bold text-xl text-green-700 text-center mb-4">Greener Houston</div>
             {navLinks.map((l, i) => (
               <motion.div
                 key={l.to}
@@ -115,8 +113,8 @@ const Navbar = () => {
               >
                 <Link
                   to={l.to}
-                  className={`block px-4 py-3 rounded-xl font-heading font-semibold transition-colors ${
-                    location.pathname === l.to ? "bg-accent" : "hover:bg-navy-light"
+                  className={`block px-4 py-3 rounded-lg font-heading font-semibold transition-colors ${
+                    location.pathname === l.to ? "bg-green-600 text-white" : "hover:bg-green-50 text-gray-700"
                   }`}
                 >
                   {l.label}
@@ -124,10 +122,10 @@ const Navbar = () => {
               </motion.div>
             ))}
             <div className="mt-auto flex flex-col gap-3">
-              <a href="tel:+18329843507" className="btn-accent text-center flex items-center justify-center gap-2">
+              <a href="tel:+18328017545" className="bg-green-600 text-white text-center flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all">
                 <Phone className="w-4 h-4" /> Call Now
               </a>
-              <Link to="/contact" className="btn-primary text-center border border-primary-foreground/20">
+              <Link to="/contact" className="bg-green-600 text-white text-center px-4 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all">
                 Book Now
               </Link>
             </div>
@@ -135,7 +133,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
       {mobileOpen && (
-        <div className="fixed inset-0 z-[55] bg-foreground/40 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
+        <div className="fixed inset-0 z-[55] bg-black/40 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
       )}
     </>
   );
